@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Monte Carlo Simulation of the Newsvendor Problem</title><link rel="stylesheet" href="../style.css"></head>
+<body><main><a class="back" href="../index.html">&larr; All projects</a>
+<h1>Monte Carlo Simulation of the Newsvendor Problem</h1>
+<p class="meta">ISYE 6644 Simulation, Summer 2026 &middot; Individual project</p>
+<div class="tags"><span>Monte Carlo simulation</span><span>Python</span><span>NumPy</span><span>SciPy</span><span>Confidence intervals</span><span>Sensitivity analysis</span></div>
+<h2>My role</h2><p>Sole author: problem framing, simulation code, experimental design, analysis and report.</p><h2>Problem</h2><p>A seller must choose how much to order before demand is known: too much leaves unsold stock, too little loses sales. With price $12, cost $7 and salvage $2, the optimal order sits at the critical fractile of 0.5, which for continuous demand is the median. The project asks how well simulation recovers that optimum and when optimizing is worth the effort.</p><h2>Approach</h2><p>A Python Monte Carlo framework evaluates expected profit across order quantities for five demand distributions with the same mean of 100 (normal, uniform, gamma, exponential, Poisson). Four experiments: profit curves, validation against the analytical optimum over 100 replications, a comparison of the naive mean-demand policy against the optimal policy using 95% confidence intervals, and a factorial sensitivity study over critical fractile and demand variability. All results are reproducible from a fixed seed.</p><h2>Results</h2><table><thead><tr><th>Distribution</th><th class="n">Mean error of simulated optimum</th><th class="n">Profit gain, optimal vs. mean policy</th></tr></thead><tbody>
+<tr><td>Normal</td><td class="n">0.20%</td><td class="n">-0.1% (not significant)</td></tr>
+<tr><td>Poisson</td><td class="n">0.54%</td><td class="n">0.1% (not significant)</td></tr>
+<tr><td>Uniform</td><td class="n">1.45%</td><td class="n">-0.3% (not significant)</td></tr>
+<tr><td>Gamma</td><td class="n">3.00%</td><td class="n">0.5%</td></tr>
+<tr><td>Exponential</td><td class="n">5.25%</td><td class="n">15.5% (intervals do not overlap)</td></tr>
+</tbody></table>
+<p>The simulated optimum tracks the analytical solution closely. The key finding is that the value of optimizing depends on skew, not variance alone: where the mean and median coincide, ordering the mean is just as good, but for the heavily skewed exponential the mean is far above the median and the optimal order lifts profit by 15.5%. In the sensitivity study, at a fractile of 0.9, raising demand variability from CV 0.10 to 0.40 increases the optimal order by 34%, while at 0.3 it lowers it by 17%.</p>
+<img src="../assets/fig1_profit_curves.png" alt="Expected profit versus order quantity for five demand distributions" width="100%">
+<img src="../assets/fig4_baseline_vs_optimal.png" alt="Profit under naive and optimal ordering policies" width="100%">
+<p>Limitations: single period, normal demand only in the sensitivity study, and no real demand data. Extensions include multi-period policies, parameter uncertainty and ranking-and-selection procedures.</p></main></body></html>
