@@ -9,6 +9,9 @@ h2{font-size:1.15rem;margin:36px 0 8px;padding-top:12px;border-top:1px solid var
 .sub{color:var(--muted);margin:0 0 28px}
 .card{display:block;padding:16px 18px;margin:14px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;text-decoration:none;color:inherit}
 .card:hover{border-color:var(--accent)}
+.card h3 a{text-decoration:none}
+.card h3 a:hover{text-decoration:underline}
+h1 a{color:inherit;text-decoration-color:var(--line)}
 .card h3{margin:0 0 4px;font-size:1.05rem;color:var(--accent)}
 .card p{margin:0;color:var(--muted);font-size:.95rem}
 .meta{color:var(--muted);font-size:.9rem;margin:0 0 20px}
