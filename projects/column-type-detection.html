@@ -12,4 +12,10 @@
 <tr><td>Gated fusion, cross-entropy</td><td class="n">0.8617</td><td class="n">0.8287</td><td class="n">0.7133</td></tr>
 <tr><td>Baseline, class-balanced focal</td><td class="n">0.8459</td><td class="n">0.8105</td><td class="n">0.6612</td></tr>
 </tbody></table>
-<p>The plain baseline was best on every metric. Its weighted F1 of 0.8683 is within two points of Sherlock's published 0.89. Gating and focal loss did not help, which is consistent with the flatter-than-expected label distribution. Per-feature-group ablations were not completed.</p></main></body></html>
+<p>The plain baseline was best on every metric. Its weighted F1 of 0.8683 is within two points of Sherlock's published 0.89. Gating and focal loss did not help, which is consistent with the flatter-than-expected label distribution. Per-feature-group ablations were not completed.</p><h2>How it compares</h2><p>Validation results across the three tracks, the other two built by teammates:</p>
+<table><thead><tr><th>Track</th><th class="n">Micro-F1</th><th class="n">Macro-F1</th><th class="n">Tail-class F1</th></tr></thead><tbody>
+<tr><td>1. Feature network (mine)</td><td class="n">0.8685</td><td class="n">0.8401</td><td class="n">0.7404</td></tr>
+<tr><td>2. Fine-tuned DistilBERT</td><td class="n">0.8994</td><td class="n">0.8775</td><td class="n">0.7972</td></tr>
+<tr><td>3. Supervised contrastive encoder</td><td class="n">0.8773</td><td class="n">0.8518</td><td class="n">0.7348</td></tr>
+</tbody></table>
+<p>The fine-tuned transformer led, and the engineered-feature network came within about four macro-F1 points while being far smaller and cheaper to train. Track 3 was evaluated on a 5,120-column validation subset with one seed, so its numbers are less certain.</p></main></body></html>
